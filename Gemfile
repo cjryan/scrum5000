@@ -33,6 +33,9 @@ gem 'less-rails'
 #Added postgres for db
 gem 'pg'
 
+#Use Devise for authentication
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
