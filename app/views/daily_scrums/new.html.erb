@@ -1,2 +1,22 @@
-<h1>DailyScrums#new</h1>
-<p>Find me in app/views/daily_scrums/new.html.erb</p>
+<% if user_signed_in? %>
+  <%= form_for :daily_scrum, url: daily_scrums_path do |f| %>
+    <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
+    <h1>Welcome, <%= current_user.email %>!</h1>
+    <h3>Daily scrum for <%= Time.now.strftime("%Y/%m/%d") %> </h3>
+    <p>
+      <%= f.label :scrum_yesterday, "What did you do yesterday?" %><br>
+      <%= f.text_area :scrum_yesterday %>
+    </p>
+    <p>
+      <%= f.label :scrum_today, "What will you do today?" %><br>
+      <%= f.text_area :scrum_today %>
+    </p>
+    <p>
+      <%= f.label :scrum_blockers, "Are there any impediments in your way?" %><br>
+      <%= f.text_area :scrum_blockers %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<% end %>
