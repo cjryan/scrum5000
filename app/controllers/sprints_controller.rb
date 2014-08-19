@@ -4,5 +4,6 @@ class SprintsController < ApplicationController
   def new
   end
   def create
+    render plain: params[:sprint].inspect
   end
 end
