@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'daily_scrums/index'
+
+  get 'daily_scrums/new'
+
+  get 'daily_scrums/create'
+
+  get 'daily_scrums/update'
+
+  get 'daily_scrums/destroy'
+
+  get 'daily_scrums/edit'
+
   devise_for :users
   get 'pages/index'
   root 'pages#index'
