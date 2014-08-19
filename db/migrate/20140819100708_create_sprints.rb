@@ -1,7 +1,7 @@
 class CreateSprints < ActiveRecord::Migration
   def change
     create_table :sprints do |t|
-      t.integer :current_sprint
+      t.integer :sprint_number
       t.text :sprint_description
 
       t.timestamps

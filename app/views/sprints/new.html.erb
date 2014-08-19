@@ -1,8 +1,8 @@
 <%= form_for :sprint, url: sprints_path do |f| %>
   <!-- Perform form validation - sprint number should a) be a valid int, and b) not already exist. -->
   <p>
-    <%= f.label :current_sprint %><br>
-    <%= f.text_field :current_sprint %>
+    <%= f.label :sprint_number %><br>
+    <%= f.text_field :sprint_number %>
   </p>
   <p>
     <%= f.label :sprint_description %><br>

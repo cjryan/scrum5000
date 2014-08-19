@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140819100708) do
   enable_extension "plpgsql"
 
   create_table "sprints", force: true do |t|
-    t.integer  "current_sprint"
+    t.integer  "sprint_number"
     t.text     "sprint_description"
     t.datetime "created_at"
     t.datetime "updated_at"
