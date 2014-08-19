@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  current_sprint: 1
+  sprint_description: MyText
+
+two:
+  current_sprint: 1
+  sprint_description: MyText
