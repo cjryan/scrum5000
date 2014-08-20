@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scrum_date: 2014-08-20
+  scrum_sprint: 1
+  scrum_yesterday: MyText
+  scrum_today: MyText
+  scrum_blockers: MyText
+  scrum_user: MyText
+
+two:
+  scrum_date: 2014-08-20
+  scrum_sprint: 1
+  scrum_yesterday: MyText
+  scrum_today: MyText
+  scrum_blockers: MyText
+  scrum_user: MyText
