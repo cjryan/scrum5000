@@ -2,7 +2,15 @@
   <%= form_for :daily_scrum, url: daily_scrums_path do |f| %>
     <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
     <h1>Welcome, <%= current_user.email %>!</h1>
-    <h3>Daily scrum for <%= Time.now.strftime("%Y/%m/%d") %> </h3>
+    <h3>Daily scrum for :</h3>
+    <p>
+      <%= f.label :scrum_date, "Please enter a date for your scrum:" %>
+      <%= f.text_field :scrum_date  %>
+    </p>
+    <p>
+      <%= f.label :scrum_sprint, "Please select a sprint:" %><br>
+      <%= f.text_area :sprint %>
+    </p>
     <p>
       <%= f.label :scrum_yesterday, "What did you do yesterday?" %><br>
       <%= f.text_area :scrum_yesterday %>
