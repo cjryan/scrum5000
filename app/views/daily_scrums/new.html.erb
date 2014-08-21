@@ -3,7 +3,7 @@
     <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
     <h3>Welcome, <%= current_user.email %>!</h3>
     <p>
-      <%= f.label :scrum_date, "Please enter a date for your scrum:" %>
+      <%= f.label :scrum_date, "Please enter a date for your scrum using the pop-up calendar:" %>
       <%= f.text_field :scrum_date  %>
     </p>
     <p>
