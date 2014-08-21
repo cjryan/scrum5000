@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :pages
   resources :sprints
+  #The /user_scrums must appear over the resources :daily_scrums, because otherwise
+  #the :daily_scrums/:id route will pick it up.
+  get 'daily_scrums/user_scrums' => 'daily_scrums#user_scrums'
+  post 'daily_scrums/search_user_scrums' => 'daily_scrums#search_user_scrums'
   resources :daily_scrums
   devise_for :users
   root 'pages#index'

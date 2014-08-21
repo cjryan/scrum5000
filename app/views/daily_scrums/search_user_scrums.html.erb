@@ -1,0 +1,6 @@
+<h3>Displaying the results for Sprint <%= @user_selected_sprint.sprint_number %></h3>
+<p>
+  <% @scrum_by_user.each do |record| %>
+    <%= link_to record.id, daily_scrum_path(record.id) %><%= " #{record.scrum_date}" %><br />
+  <% end %>
+</p>
