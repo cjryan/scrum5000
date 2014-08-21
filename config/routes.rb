@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   #the :daily_scrums/:id route will pick it up.
   get 'daily_scrums/user_scrums' => 'daily_scrums#user_scrums'
   post 'daily_scrums/search_user_scrums' => 'daily_scrums#search_user_scrums'
+  get 'daily_scrums/all_scrums' => 'daily_scrums#all_scrums'
+  post 'daily_scrums/search_all_scrums' => 'daily_scrums#search_all_scrums'
   resources :daily_scrums
   devise_for :users
   root 'pages#index'
