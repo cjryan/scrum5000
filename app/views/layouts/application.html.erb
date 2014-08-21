@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -15,11 +15,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Scrum 5000</a>
+        <%= link_to "Scrum 5000", root_url, :class => "brand"%>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Add Sprint" %></li>
-            <li><%= link_to "Daily Scrum" %></li>
+            <li><%= link_to "Add Sprint", new_sprint_path %></li>
+            <li><%= link_to "Add a Daily Scrum", new_daily_scrum_path %></li>
+            <li><%= link_to "User Daily Scrums by Sprint" %></li>
+            <li><%= link_to "All Scrums by Sprint" %></li>
           </ul>
         </div>
       </div>

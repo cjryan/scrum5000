@@ -1,14 +1,16 @@
-<%= form_for :sprint, url: sprints_path do |f| %>
-  <!-- Perform form validation - sprint number should a) be a valid int, and b) not already exist. -->
-  <p>
-    <%= f.label :sprint_number %><br>
-    <%= f.text_field :sprint_number %>
-  </p>
-  <p>
-    <%= f.label :sprint_description %><br>
-    <%= f.text_area :sprint_description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+<%if user_signed_in? %>
+  <%= form_for :sprint, url: sprints_path do |f| %>
+    <!-- Perform form validation - sprint number should a) be a valid int, and b) not already exist. -->
+    <p>
+      <%= f.label :sprint_number %><br>
+      <%= f.text_field :sprint_number %>
+    </p>
+    <p>
+      <%= f.label :sprint_description %><br>
+      <%= f.text_area :sprint_description %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 <% end %>

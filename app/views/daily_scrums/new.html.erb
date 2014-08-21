@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <%= form_for :daily_scrum, url: daily_scrums_path do |f| %>
     <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
-    <h1>Welcome, <%= current_user.email %>!</h1>
+    <h3>Welcome, <%= current_user.email %>!</h3>
     <p>
       <%= f.label :scrum_date, "Please enter a date for your scrum:" %>
       <%= f.text_field :scrum_date  %>
