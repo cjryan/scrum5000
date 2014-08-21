@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+sprints = Sprint.create([{sprint_number: '49'}, {sprint_number: '48'}, {sprint_number: '47'}, {sprint_number: '46'}])
