@@ -8,7 +8,7 @@
 </p>
 <p>
   <strong>Scrum Sprint:</strong>
-  <%= @daily_scrum.scrum_sprint %>
+  <%= Sprint.find_by(:id=>@daily_scrum.sprint_id).sprint_number %>
 </p>
   <strong>Yesterday:</strong>
   <%= @daily_scrum.scrum_yesterday %>

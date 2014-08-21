@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140820115553) do
 
   create_table "daily_scrums", force: true do |t|
     t.text     "scrum_date"
-    t.integer  "scrum_sprint"
+    t.integer  "sprint_id"
     t.text     "scrum_yesterday"
     t.text     "scrum_today"
     t.text     "scrum_blockers"

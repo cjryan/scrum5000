@@ -30,7 +30,7 @@ class DailyScrumsController < ApplicationController
   #Acceptable parameters to be passed to the model.
   private
   def daily_scrum_params
-    params.require(:daily_scrum).permit(:scrum_date, :scrum_sprint, :scrum_yesterday, :scrum_today, :scrum_blockers, :scrum_user)
+    params.require(:daily_scrum).permit(:scrum_date, :sprint_id, :scrum_yesterday, :scrum_today, :scrum_blockers, :scrum_user)
   end
 
 end
