@@ -3,13 +3,19 @@ class DailyScrumsController < ApplicationController
   end
 
   def new
+    #This is present to prevent 'nil' errors when the form is loaded on the 'new' action
+    @daily_scrum = DailyScrum.new
   end
 
   def create
     @daily_scrum = DailyScrum.new(daily_scrum_params)
 
-    @daily_scrum.save
-    redirect_to @daily_scrum
+    #If the form is successfully saved, display the saved info. Else, render the error.
+    if @daily_scrum.save
+      redirect_to @daily_scrum
+    else
+      render 'new'
+    end
     #render plain: params[:daily_scrum].inspect
   end
 

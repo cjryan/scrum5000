@@ -1,6 +1,16 @@
 <% if user_signed_in? %>
   <%= form_for :daily_scrum, url: daily_scrums_path do |f| %>
     <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
+    <% if @daily_scrum.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@daily_scrum.errors.count, "error") %> prohibited this scrum from being saved:</h2>
+        <ul>
+        <% @daily_scrum.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <h3>Welcome, <%= current_user.email %>!</h3>
     <p>
       <%= f.label :scrum_date, "Please enter a date for your scrum using the pop-up calendar:" %>
