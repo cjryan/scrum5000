@@ -11,20 +11,21 @@ default: &default
   pool: 5
   timeout: 5000
   host: <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
+  port: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
   username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
   password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
 
-development:
-  <<: *default
-  database: scrum5000_dev
+#development:
+#  <<: *default
+#  database: scrum5000_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: scrum5000_test
+#test:
+#  <<: *default
+#  database: scrum5000_test
 
 production:
   <<: *default
-  database: scrum5000
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
