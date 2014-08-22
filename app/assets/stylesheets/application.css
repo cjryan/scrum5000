@@ -14,3 +14,11 @@
  *= require_self
  *= require jquery-ui
  */
+#error_explanation {
+  padding: 2px;
+  background-color: #F2DEDE;
+  border-color: #EED3D7;
+  box-shadow: none;
+  color: #B94A48;
+  display: table;
+}
