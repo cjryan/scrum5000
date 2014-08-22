@@ -4,5 +4,7 @@
 
 #The $ -> syntax is coffee script for $(function() {});
 #http://stackoverflow.com/a/10188403
-$ ->
+ready = ->
   $("#daily_scrum_scrum_date").datepicker();
+$(document).ready(ready)
+$(document).on('page:load', ready)
