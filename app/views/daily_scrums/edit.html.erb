@@ -1,2 +1,47 @@
-<h1>DailyScrums#edit</h1>
-<p>Find me in app/views/daily_scrums/edit.html.erb</p>
+<% if user_signed_in? %>
+  <%= form_for :daily_scrum, url: daily_scrum_path(@daily_scrum), method: :patch do |f| %>
+    <!-- Perform form validation - None of the fields should be emtpy, and a previous entry should not exist. -->
+    <% if @daily_scrum.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@daily_scrum.errors.count, "error") %> prohibited this scrum from being saved:</h2>
+        <ul>
+        <% @daily_scrum.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h3>Welcome, <%= current_user.email %>!</h3>
+    <p>
+      <%= f.label :scrum_date, "Please enter a date for your scrum using the pop-up calendar:" %>
+      <%= f.text_field :scrum_date  %>
+    </p>
+    <p>
+      <%= f.label :scrum_sprint, "Please select a sprint:" %><br>
+      <%= f.collection_select :sprint_id, Sprint.all, :id, :sprint_number %>
+    </p>
+    <p>
+      <%= f.label :scrum_yesterday, "What did you do yesterday?" %><br>
+      <%= f.text_area :scrum_yesterday %>
+    </p>
+    <p>
+      <%= f.label :scrum_today, "What will you do today?" %><br>
+      <%= f.text_area :scrum_today %>
+    </p>
+    <p>
+      <%= f.label :scrum_blockers, "Are there any impediments in your way?" %><br>
+      <%= f.text_area :scrum_blockers %>
+    </p>
+    <p>
+      <%= f.hidden_field :scrum_user, :value => current_user.email %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<% else %>
+    <div id="error_explanation">
+      <h3>Please sign in.</h3>
+    </div><!-- end error_explanation -->
+<% end %>
+<%= link_to 'Back', daily_scrums_path %>

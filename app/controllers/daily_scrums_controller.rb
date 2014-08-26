@@ -1,5 +1,6 @@
 class DailyScrumsController < ApplicationController
   def index
+    @daily_scrums = DailyScrum.all
   end
 
   def new
@@ -45,13 +46,22 @@ class DailyScrumsController < ApplicationController
     @selected_sprint = Sprint.find(sprint_selection)
   end
 
+  def edit
+    @daily_scrum = DailyScrum.find(params[:id])
+  end
+
   def update
+    @daily_scrum = DailyScrum.find(params[:id])
+
+    #If the form is successfully saved, display the saved info. Else, render the error.
+    if @daily_scrum.update(daily_scrum_params)
+      redirect_to @daily_scrum
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-  end
-
-  def edit
   end
 
   #Strong Parameters, new in Rails 4. This whitelists the
