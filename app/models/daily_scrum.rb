@@ -4,5 +4,4 @@ class DailyScrum < ActiveRecord::Base
   validates :sprint_id, presence: true
   validates :scrum_yesterday, presence: true
   validates :scrum_today, presence: true
-  validates :scrum_blockers, presence: true
 end
