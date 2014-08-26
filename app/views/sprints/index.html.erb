@@ -1,1 +1,15 @@
-
+<table>
+    <tr>
+      <th>Sprint</th>
+      <th>Desc.</th>
+      <th colspan="2"></th>
+    </tr>
+<% @sprints.each do |sprint| %>
+  <tr>
+    <td><%=sprint.sprint_number%></td>
+    <td><%=sprint.sprint_description%></td>
+    <td><%=link_to 'Show', sprint_path(sprint) %></td>
+    <td><%=link_to 'Edit', edit_sprint_path(sprint) %></td>
+  </tr>
+<% end %>
+</table>

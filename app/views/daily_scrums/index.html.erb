@@ -1,2 +1,17 @@
-<h1>DailyScrums#index</h1>
-<p>Find me in app/views/daily_scrums/index.html.erb</p>
+<table>
+    <tr>
+      <th>Scrum Date</th>
+      <th>Scrum User</th>
+      <th colspan="2"></th>
+    </tr>
+<% @daily_scrums.each do |daily_scrum| %>
+  <tr>
+    <td><%=daily_scrum.scrum_date%></td>
+    <td><%=daily_scrum.scrum_user%></td>
+    <td><%=link_to 'Show', daily_scrum_path(daily_scrum) %></td>
+    <% if daily_scrum.scrum_user == current_user.email%>
+      <td><%=link_to 'Edit', edit_daily_scrum_path(daily_scrum) %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

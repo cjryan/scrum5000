@@ -1,6 +1,19 @@
 <h3>Displaying the results for Sprint <%= @user_selected_sprint.sprint_number %> for <%= current_user.email%></h3>
-<p>
-  <% @scrum_by_user.each do |record| %>
-    <%= link_to record.id, daily_scrum_path(record.id) %><%= " #{record.scrum_date}" %><br />
-  <% end %>
-</p>
+<table>
+    <tr>
+      <th>Scrum Date</th>
+      <th>Scrum User</th>
+      <th colspan="2"></th>
+    </tr>
+<% @scrum_by_user.each do |daily_scrum| %>
+  <tr>
+    <td><%=daily_scrum.scrum_date%></td>
+    <td><%=daily_scrum.scrum_user%></td>
+    <td><%=link_to 'Show', daily_scrum_path(daily_scrum) %></td>
+    <% if daily_scrum.scrum_user == current_user.email%>
+      <td><%=link_to 'Edit', edit_daily_scrum_path(daily_scrum) %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+

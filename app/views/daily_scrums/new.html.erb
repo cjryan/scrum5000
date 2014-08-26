@@ -18,7 +18,7 @@
     </p>
     <p>
       <%= f.label :scrum_sprint, "Please select a sprint:" %><br>
-      <%= f.collection_select :sprint_id, Sprint.all, :id, :sprint_number %>
+      <%= f.collection_select :sprint_id, Sprint.all.order('sprint_number DESC'), :id, :sprint_number %>
     </p>
     <p>
       <%= f.label :scrum_yesterday, "What did you do yesterday?" %><br>

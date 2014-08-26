@@ -2,7 +2,7 @@
   <%= form_for :daily_scrum, url: daily_scrums_search_all_scrums_path do |f| %>
     <p>
       <%= f.label :scrum_sprint, "Please select a sprint:" %><br>
-      <%= f.collection_select :sprint_id, Sprint.all, :id, :sprint_number %>
+      <%= f.collection_select :sprint_id, Sprint.all.order('sprint_number DESC'), :id, :sprint_number %>
     </p>
     <p>
       <%= f.submit "Choose a sprint" %>
