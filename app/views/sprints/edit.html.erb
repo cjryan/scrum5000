@@ -1,0 +1,37 @@
+<%if user_signed_in? %>
+  <% if current_user.try(:admin?) %>
+    <%= form_for :sprint, url: sprint_path(@sprint), method: :patch do |f| %>
+      <!-- Perform form validation - sprint number should a) be a valid int, and b) not already exist. -->
+      <% if @sprint.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@sprint.errors.count, "error") %> prohibited this Sprint from being saved:</h2>
+          <ul>
+          <% @sprint.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>
+        <%= f.label :sprint_number %><br>
+        <%= f.text_field :sprint_number %>
+      </p>
+      <p>
+        <%= f.label :sprint_description %><br>
+        <%= f.text_area :sprint_description %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
+  <% else %>
+    <div id="error_explanation">
+      <h3>Only administrators are allowed to add Sprints.</h3>
+    </div><!-- end error_explanation -->
+  <% end %>
+<% else %>
+    <div id="error_explanation">
+      <h3>Please sign in.</h3>
+    </div><!-- end error_explanation -->
+<% end %>
+<%= link_to 'Back', sprints_path %>
