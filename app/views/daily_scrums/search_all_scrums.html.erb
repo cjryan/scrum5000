@@ -16,4 +16,4 @@
   </tr>
 <% end %>
 </table>
-<%= link_to "Export to CSV", search_all_scrums_by_sprint_path(format: "csv") %>
+<%= link_to "Export to CSV", search_all_scrums_by_sprint_path(@selected_sprint.sprint_number, format: "csv") %>
