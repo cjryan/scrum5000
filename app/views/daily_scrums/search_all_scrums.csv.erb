@@ -1,0 +1,7 @@
+<% headers = ['Date', 'User', 'Yesterday', 'Today', 'Blockers'] %>
+<%= CSV.generate_line headers %>
+<% @all_scrums.each do |scrum| %>
+  <% if not scrum.blank? %>
+    <%= CSV.generate_line([scrum.scrum_date, scrum.scrum_user, scrum.scrum_yesterday, scrum.scrum_today, scrum.scrum_blockers], :row_sep => ?\t, :quote_char => ?\ ) %>
+  <% end %>
+<% end %>

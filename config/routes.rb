@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'daily_scrums/user_scrums' => 'daily_scrums#user_scrums'
   post 'daily_scrums/search_user_scrums' => 'daily_scrums#search_user_scrums'
   get 'daily_scrums/all_scrums' => 'daily_scrums#all_scrums'
+  get 'daily_scrums/:sprint_id/search_all_scrums' => 'daily_scrums#search_all_scrums', :as => 'search_all_scrums_by_sprint'
   post 'daily_scrums/search_all_scrums' => 'daily_scrums#search_all_scrums'
   resources :daily_scrums
   devise_for :users
