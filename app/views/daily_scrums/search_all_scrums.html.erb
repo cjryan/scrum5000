@@ -1,5 +1,5 @@
 <h3>Displaying the results for Sprint <%= @selected_sprint.sprint_number %></h3>
-<%@date_headers.each do |header| %>
+<%= link_to "Export to CSV", search_all_scrums_by_sprint_path(@selected_sprint.id, format: "csv") %><%@date_headers.each do |header| %>
   <h3><%=header.scrum_date%></h3><br>
   <table>
   <% @all_scrums.each do |daily_scrum| %>
@@ -16,4 +16,3 @@
   <% end %>
 </table>
 <%end%>
-<%= link_to "Export to CSV", search_all_scrums_by_sprint_path(@selected_sprint.id, format: "csv") %>
