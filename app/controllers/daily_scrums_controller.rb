@@ -49,7 +49,10 @@ class DailyScrumsController < ApplicationController
       @selected_sprint = Sprint.find(sprint_selection)
     end
     #Find all scrums in the sprint
-    @all_scrums = DailyScrum.where(:sprint_id => sprint_selection)
+    @all_scrums = DailyScrum.where(:sprint_id => sprint_selection).order('scrum_date ASC')
+
+    #Return all unique dates to group scrums
+    @date_headers = DailyScrum.select(:scrum_date).distinct.where(:sprint_id => sprint_selection).order('scrum_date ASC')
 
     #render the csv
     respond_to do |format|
