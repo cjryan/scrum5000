@@ -5,6 +5,8 @@
 #The $ -> syntax is coffee script for $(function() {});
 #http://stackoverflow.com/a/10188403
 ready = ->
-  $("#daily_scrum_scrum_date").datepicker();
+  $("#daily_scrum_scrum_date").datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
 $(document).ready(ready)
 $(document).on('page:load', ready)

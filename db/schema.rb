@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822113456) do
+ActiveRecord::Schema.define(version: 20140828094103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "daily_scrums", force: true do |t|
-    t.text     "scrum_date"
+    t.date     "scrum_date"
     t.integer  "sprint_id"
     t.text     "scrum_yesterday"
     t.text     "scrum_today"
