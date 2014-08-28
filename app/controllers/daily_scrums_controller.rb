@@ -41,13 +41,15 @@ class DailyScrumsController < ApplicationController
   def search_all_scrums
     if params[:daily_scrum]
       sprint_selection = params[:daily_scrum][:sprint_id]
+      #For use in the display
+      @selected_sprint = Sprint.find(sprint_selection)
     else
       sprint_selection = params[:sprint_id]
+      #For use in the display
+      @selected_sprint = Sprint.find(sprint_selection)
     end
     #Find all scrums in the sprint
     @all_scrums = DailyScrum.where(:sprint_id => sprint_selection)
-    #For use in the display
-    @selected_sprint = Sprint.find(sprint_selection)
 
     #render the csv
     respond_to do |format|
