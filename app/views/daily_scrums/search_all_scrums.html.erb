@@ -1,4 +1,5 @@
 <h3>Displaying the results for Sprint <%= @selected_sprint.sprint_number %></h3>
+<b>Names higlighted in <span class="blocker_highlight">red</span> indicate that a blocker is present.</b><br><br>
 <%= link_to "Export to CSV", search_all_scrums_by_sprint_path(@selected_sprint.id, format: "csv") %><%@date_headers.each do |header| %>
   <h3><%=header.scrum_date%></h3>
   <table>
@@ -6,7 +7,11 @@
     <% if daily_scrum.scrum_date == header.scrum_date%>
       <tr>
         <td><%# daily_scrum.scrum_date%></td>
-        <td><%=daily_scrum.scrum_user%></td>
+        <% if not daily_scrum.scrum_blockers.blank? %>
+          <td class="blocker_highlight"><%=daily_scrum.scrum_user%></td>
+        <% else %>
+          <td><%=daily_scrum.scrum_user%></td>
+        <% end %>
         <td class="scrum_show"><%=link_to 'Show', daily_scrum_path(daily_scrum) %></td>
         <% if daily_scrum.scrum_user == current_user.email%>
           <td class="scrum_edit"><%=link_to 'Edit', edit_daily_scrum_path(daily_scrum) %></td>
