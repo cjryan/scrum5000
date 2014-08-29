@@ -7,7 +7,7 @@
   <% @all_scrums.each do |daily_scrum| %>
     <% if daily_scrum.scrum_date == header.scrum_date%>
       <%
-          popover_contents = "Yesterday: #{daily_scrum.scrum_yesterday}<br>Today: #{daily_scrum.scrum_today}<br>Blockers: #{daily_scrum.scrum_blockers}"
+          popover_contents = "<b>Yesterday:</b><br>#{daily_scrum.scrum_yesterday}<br><b>Today:</b><br>#{daily_scrum.scrum_today}<br><b>Blockers:</b><br>#{daily_scrum.scrum_blockers}"
       %>
       <tr>
         <td><%# daily_scrum.scrum_date%></td>
