@@ -1,16 +1,20 @@
 <h3>Displaying the results for Sprint <%= @selected_sprint.sprint_number %></h3>
-<b>Names higlighted in <span class="blocker_highlight">red</span> indicate that a blocker is present.</b><br><br>
+<b>Names higlighted in <span class="blocker_highlight">red</span> indicate that a blocker is present.</b><br>
+<b>Please either hover over the name to see the scrum, or click "Show" next to the name.</b><br><br>
 <%= link_to "Export to CSV", search_all_scrums_by_sprint_path(@selected_sprint.id, format: "csv") %><%@date_headers.each do |header| %>
   <h3><%=header.scrum_date%></h3>
   <table>
   <% @all_scrums.each do |daily_scrum| %>
     <% if daily_scrum.scrum_date == header.scrum_date%>
+      <%
+          popover_contents = "Yesterday: #{daily_scrum.scrum_yesterday}<br>Today: #{daily_scrum.scrum_today}<br>Blockers: #{daily_scrum.scrum_blockers}"
+      %>
       <tr>
         <td><%# daily_scrum.scrum_date%></td>
         <% if not daily_scrum.scrum_blockers.blank? %>
-          <td class="blocker_highlight"><%=daily_scrum.scrum_user%></td>
+          <td class="blocker_highlight scrum_popover" data-toggle="popover" data-content="<%=popover_contents%>"><%=daily_scrum.scrum_user%></td>
         <% else %>
-          <td><%=daily_scrum.scrum_user%></td>
+          <td class="scrum_popover" data-toggle="popover" data-content="<%=popover_contents%>"><%=daily_scrum.scrum_user%></td>
         <% end %>
         <td class="scrum_show"><%=link_to 'Show', daily_scrum_path(daily_scrum) %></td>
         <% if daily_scrum.scrum_user == current_user.email%>

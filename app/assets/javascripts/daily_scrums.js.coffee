@@ -8,5 +8,11 @@ ready = ->
   $("#daily_scrum_scrum_date").datepicker({
     dateFormat: 'yy-mm-dd'
   });
+
+  $('[data-toggle="popover"]').popover({
+    trigger: 'hover',
+    'placement': 'top'
+    'html': true
+  });
 $(document).ready(ready)
 $(document).on('page:load', ready)
