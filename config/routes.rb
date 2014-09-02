@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #The /user_scrums must appear over the resources :daily_scrums, because otherwise
   #the :daily_scrums/:id route will pick it up.
   get 'daily_scrums/user_scrums' => 'daily_scrums#user_scrums'
+  get 'daily_scrums/:sprint_id/:user_id/search_user_scrums' => 'daily_scrums#search_user_scrums', :as => 'search_user_scrums_by_sprint'
   post 'daily_scrums/search_user_scrums' => 'daily_scrums#search_user_scrums'
   get 'daily_scrums/all_scrums' => 'daily_scrums#all_scrums'
   get 'daily_scrums/:sprint_id/search_all_scrums' => 'daily_scrums#search_all_scrums', :as => 'search_all_scrums_by_sprint'
