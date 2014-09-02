@@ -41,7 +41,7 @@ class DailyScrumsController < ApplicationController
     if params[:daily_scrum]
       scrum_email = User.find(params[:daily_scrum][:user_id])[:email]
     else
-      scrum_email = User.find(params[:user_id])[:emai]
+      scrum_email = User.find(params[:user_id])[:email]
     end
     @scrum_by_user = DailyScrum.where(:scrum_user => scrum_email, :sprint_id => sprint_selection)
   end
