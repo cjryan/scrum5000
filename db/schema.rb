@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903130750) do
+ActiveRecord::Schema.define(version: 20140903151735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140903130750) do
     t.text     "scrum_yesterday"
     t.text     "scrum_today"
     t.text     "scrum_blockers"
-    t.text     "scrum_user"
+    t.integer  "scrum_user"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
