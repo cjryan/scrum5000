@@ -14,7 +14,7 @@
         <% if not daily_scrum.scrum_blockers.blank? %>
           <td class="blocker_highlight scrum_popover" data-toggle="popover" data-content="<%=popover_contents%>"><%=User.find_by(:id=>daily_scrum.scrum_user).email%></td>
         <% else %>
-          <td class="scrum_popover" data-toggle="popover" data-content="<%=popover_contents%>"><%=daily_scrum.scrum_user%></td>
+          <td class="scrum_popover" data-toggle="popover" data-content="<%=popover_contents%>"><%=User.find_by(:id=>daily_scrum.scrum_user).email%></td>
         <% end %>
         <td class="scrum_show"><%=link_to 'Show', daily_scrum_path(daily_scrum) %></td>
         <% if User.find_by(:id=>daily_scrum.scrum_user).email == current_user.email%>
