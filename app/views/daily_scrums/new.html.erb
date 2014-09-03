@@ -33,7 +33,7 @@
       <%= f.text_area :scrum_blockers %>
     </p>
     <p>
-      <%= f.hidden_field :scrum_user, :value => current_user.email %>
+      <%= f.hidden_field :scrum_user, :value => current_user.id %>
     </p>
     <p>
       <%= f.submit %>
