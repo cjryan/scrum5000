@@ -29,21 +29,23 @@ class DailyScrumsController < ApplicationController
 
   def search_user_scrums
     if params[:daily_scrum]
-      sprint_selection = params[:daily_scrum][:sprint_id]
+      selected_sprint = params[:daily_scrum][:sprint_id]
       #For use in the display
-      @user_selected_sprint = Sprint.find(sprint_selection)
+      @user_selected_sprint = Sprint.find(selected_sprint)
     else
-      sprint_selection = params[:sprint_id]
+      selected_sprint = params[:sprint_id]
       #For use in the display
-      @user_selected_sprint = Sprint.find(sprint_selection)
+      @user_selected_sprint = Sprint.find(selected_sprint)
     end
     #Find all scrums in the sprint by user
     if params[:daily_scrum]
       @scrum_email = User.find(params[:daily_scrum][:user_id])[:email]
+      @scrum_userid = params[:daily_scrum][:user_id]
     else
       @scrum_email = User.find(params[:user_id])[:email]
+      @scrum_userid = params[:daily_scrum][:user_id]
     end
-    @scrum_by_user = DailyScrum.where(:scrum_user => @scrum_email, :sprint_id => sprint_selection)
+    @scrum_by_user = DailyScrum.where(:scrum_user => @scrum_userid, :sprint_id => selected_sprint)
   end
 
   def all_scrums
