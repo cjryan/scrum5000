@@ -46,6 +46,9 @@ class DailyScrumsController < ApplicationController
       @scrum_userid = params[:daily_scrum][:user_id]
     end
     @scrum_by_user = DailyScrum.where(:scrum_user => @scrum_userid, :sprint_id => selected_sprint)
+
+    #Return all unique dates to group scrums
+    @date_headers = DailyScrum.select(:scrum_date).distinct.where(:sprint_id => selected_sprint).order('scrum_date ASC')
   end
 
   def all_scrums
