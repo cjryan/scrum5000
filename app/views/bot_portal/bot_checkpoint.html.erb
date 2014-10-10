@@ -1,0 +1,6 @@
+<br />
+<br />
+<br />
+<% @unreported.each do |laggard| %>
+  <%=User.find_by(:id=>laggard.id).email%>
+<% end %>
