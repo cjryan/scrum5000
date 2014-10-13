@@ -1,7 +1,2 @@
-<% laggards = {} %>
-<% @unreported.each do |laggard| %>
-  <% User.find_by(:id=>laggard).email %>
-  <% laggards[laggard.to_s] = User.find_by(:id=>laggard).email %>
-<% end %>
-<%#The 'raw' command gets rid of the ;quot rendering issue%>
-<%=raw JSON.generate(laggards)%>
+<%# The 'raw' command gets rid of the ;quot rendering issue %>
+<%= raw @response %>
