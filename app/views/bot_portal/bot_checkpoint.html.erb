@@ -1,7 +1,13 @@
-<br />
-<br />
-<br />
-<% @unreported.each do |laggard| %>
-  <%=User.find_by(:id=>laggard).email%>
+<% if user_signed_in? %>
   <br />
+  <br />
+  <br />
+  <% @unreported.each do |laggard| %>
+    <%=User.find_by(:id=>laggard).email%>
+    <br />
+  <% end %>
+<% else %>
+      <div id="error_explanation">
+      <h3>Please sign in.</h3>
+    </div><!-- end error_explanation -->
 <% end %>
