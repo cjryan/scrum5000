@@ -19,13 +19,11 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
 
-  <div><%= f.label :irc_nickname %><br />
-    <%= f.text_field :message, :value => "Please enter your IRC nick" %></div>
+  <div><%= f.label :user_irc_nick %><br />
+    <%= f.text_field :user_irc_nick %></div>
 
-
-  <div><%= f.label :time_zone %><br />
-    <%= time_zone_select :time_zone, ActiveSupport::TimeZone.all, nil, {:include_blank => false}, :id => 'time-zone-select' %></div>
-
+  <div><%= f.label :user_tz %><br />
+    <%= f.time_zone_select :user_tz, nil, include_blank: true %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
