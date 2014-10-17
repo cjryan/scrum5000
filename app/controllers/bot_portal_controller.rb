@@ -25,8 +25,7 @@ class BotPortalController < ApplicationController
     #Send a JSON response with those that did not fill out a scrum
     laggards = {}
     @unreported.each do |laggard|
-      User.find_by(:id=>laggard).email
-      laggards[laggard.to_s] = User.find_by(:id=>laggard).email
+      laggards[laggard.to_s] = User.find_by(:id=>laggard).user_irc_nick
     end
     @response = JSON.generate(laggards)
   end

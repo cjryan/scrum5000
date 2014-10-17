@@ -3,7 +3,7 @@
   <br />
   <br />
   <% @unreported.each do |laggard| %>
-    <%=User.find_by(:id=>laggard).email%>
+    <%= User.find_by(:id=>laggard).user_irc_nick %>
     <br />
   <% end %>
 <% else %>
