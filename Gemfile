@@ -49,4 +49,3 @@ gem 'devise'
 
 # Use debugger
 gem 'pry', group: [:development, :test]
-gem 'byebug', group: [:development, :test]
