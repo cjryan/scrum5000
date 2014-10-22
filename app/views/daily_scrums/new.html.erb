@@ -12,6 +12,8 @@
       </div>
     <% end %>
     <h3>Welcome, <%= current_user.email %>!</h3>
+    <p>You may use Markdown in the Yesterday, Today, and Blocker boxes below.</p>
+    <br />
     <p>
       <%= f.label :scrum_date, "Please enter a date for your scrum using the pop-up calendar:" %>
       <%= f.text_field :scrum_date  %>

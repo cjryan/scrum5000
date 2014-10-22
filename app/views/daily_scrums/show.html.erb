@@ -11,13 +11,15 @@
   <%= Sprint.find_by(:id=>@daily_scrum.sprint_id).sprint_number %>
 </p>
   <strong>Yesterday:</strong>
-  <%= @daily_scrum.scrum_yesterday %>
+  <%= raw markdown(@daily_scrum.scrum_yesterday) %>
 </p>
 </p>
   <strong>Today:</strong>
-  <%= @daily_scrum.scrum_today %>
+  <% today = raw @daily_scrum.scrum_today %>
+  <%= raw markdown(today) %>
 </p>
 </p>
   <strong>Blockers:</strong>
-  <%= @daily_scrum.scrum_blockers %>
+  <% blockers = raw @daily_scrum.scrum_blockers %>
+  <%= raw markdown(blockers) %>
 </p>

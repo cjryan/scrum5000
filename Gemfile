@@ -38,6 +38,9 @@ gem 'pg'
 #Use Devise for authentication
 gem 'devise'
 
+#Use redcarpet for Markdown support
+gem 'redcarpet'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
