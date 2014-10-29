@@ -51,4 +51,8 @@ gem 'redcarpet'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'pry', group: [:development, :test]
+# gem 'pry', group: [:development, :test]
+group :development, :test do
+  gem 'pry'
+  gem 'pry-nav'
+end
