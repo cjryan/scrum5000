@@ -41,6 +41,9 @@ gem 'devise'
 #Use redcarpet for Markdown support
 gem 'redcarpet'
 
+# Use pygments for highlight code support
+gem 'pygments.rb'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
