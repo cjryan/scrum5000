@@ -23,3 +23,6 @@
   <% blockers = raw @daily_scrum.scrum_blockers %>
   <%= raw markdown(blockers) %>
 </p>
+<p>
+  <%= link_to "Edit", edit_daily_scrum_path, class: "btn btn-primary" %>
+</p>
