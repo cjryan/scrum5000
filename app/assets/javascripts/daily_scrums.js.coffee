@@ -11,7 +11,7 @@ ready = ->
 
   $('[data-toggle="popover"]').popover({
     trigger: 'hover',
-    'placement': 'top'
+    'placement': 'left'
     'html': true
   });
 $(document).ready(ready)
