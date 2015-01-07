@@ -23,7 +23,7 @@
   <% blockers = raw @daily_scrum.scrum_blockers %>
   <%= raw markdown(blockers) %>
 </p>
-<% if User.find_by(:id=>daily_scrum.scrum_user).email == current_user.email%>
+<% if User.find_by(:id=>@daily_scrum.scrum_user).email == current_user.email%>
 <p>
   <%= link_to "Edit", edit_daily_scrum_path, class: "btn btn-primary" %>
 </p>
