@@ -8,7 +8,7 @@ class BotPortalController < ApplicationController
 
     #Pull down all users, and initially populate the list with everone.
     #The Reported ones will be poped out of the array later.
-    @users = User.select(:id)
+    @users = User.select(:id).where("is_active"=>"true")
     @users.each do |user|
       @unreported << user.id
     end
