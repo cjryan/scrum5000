@@ -1,2 +1,8 @@
-<%# The 'raw' command gets rid of the ;quot rendering issue %>
-<%= raw @response %>
+<% if user_signed_in? %>
+  <%# The 'raw' command gets rid of the ;quot rendering issue %>
+  <%= raw @response %>
+<% else %>
+    <div id="error_explanation">
+      <h3>Please sign in.</h3>
+    </div><!-- end error_explanation -->
+<% end %>
