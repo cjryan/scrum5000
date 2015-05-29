@@ -1,6 +1,6 @@
 <p>
   <strong>User:</strong>
-  <%= @daily_scrum.scrum_user %>
+  <%= User.find_by(:id=>@daily_scrum.scrum_user).email %>
 </p>
 <p>
   <strong>Scrum Date:</strong>
