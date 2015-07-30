@@ -44,6 +44,9 @@ gem 'redcarpet'
 # Use pygments for highlight code support
 gem 'pygments.rb'
 
+# Use yamldb for dumping the db to yaml for backup purposes
+gem 'yaml_db'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
