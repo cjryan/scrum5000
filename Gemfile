@@ -29,7 +29,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use twitter bootstrap for theming
-gem 'twitter-bootstrap-rails'
+# Bootstrap v3 has the responsiveness fully integrated, so there's no longer a separate responsive.less
+#http://stackoverflow.com/a/25515047
+gem 'twitter-bootstrap-rails', '2.2.8'
 gem 'less-rails'
 
 #Added postgres for db
