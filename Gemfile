@@ -58,8 +58,10 @@ gem 'yaml_db'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'json', '~>1.8.1'
+
 # Use debugger
 group :development, :test do
   gem 'pry'
-  gem 'pry-nav'
+  gem 'pry-byebug'
 end
