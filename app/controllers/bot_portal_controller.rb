@@ -51,16 +51,34 @@ class BotPortalController < ApplicationController
       bot_params["sprint_id"] = Sprint.last.id
     end
 
+    #Similarly for user; get the id.
+    if bot_params.key? "scrum_user"
+      bot_params["scrum_user"] = User.find_by(user_irc_nick: params["scrum_user"]).id
+    #else
+    #  TODO: error checking if not kerberos IRC name; like blah_afk
+    #  implement fuzzy matching for id; perhaps:
+    #  https://github.com/seamusabshere/fuzzy_match ?
+    #  also, if fuzzy match is found, maybe pass back to user to allow match
+    end
+
+    #Get today's date in the user's TZ- pick today if not specified
+    #TODO: verify date is a valid date, see:
+    #https://github.com/adzap/validates_timeliness
+    if not bot_params.key? "scrum_date"
+      tz = User.find_by(:id=>bot_params["scrum_user"]).user_tz
+      user_zone = ActiveSupport::TimeZone[tz]
+      user_zone_time = user_zone.at(Time.now).strftime("%Y-%m-%d")
+      bot_params["scrum_date"] = user_zone_time
+    end
+
     #Remove the sprint_number param as it's no longer necessary; the DailyScrum
     #model doesn't have a sprint_number field, only sprint_id, which we generate
     #above.
     bot_params = bot_params.except("sprint_number")
 
-    #TODO: similarly for date - pick today if not specified
-    #TODO: error checking if not kerberos IRC name; like blah_afk
-    #TODO: verify date is a valid date.
     @query_result = DailyScrum.create(bot_params.permit(:scrum_date, :sprint_id, :scrum_yesterday, :scrum_today, :scrum_blockers, :scrum_user))
 
+    #Send a response back to the bot, either the errors or a success message
     if not @query_result.errors.full_messages.empty?
       respond_to do |format|
         format.json { render :json => JSON.generate(@query_result.errors.full_messages) }
