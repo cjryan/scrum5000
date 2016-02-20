@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'daily_scrums/search_all_scrums' => 'daily_scrums#search_all_scrums'
   resources :daily_scrums
   get 'bot_portal/bot_checkpoint' => 'bot_portal#bot_checkpoint'
+  post 'bot_portal/bot_filed_scrum' => 'bot_portal#bot_filed_scrum'
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'pages#index'
   # The priority is based upon order of creation: first created -> highest priority.
