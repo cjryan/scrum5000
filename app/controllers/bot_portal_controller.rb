@@ -1,4 +1,7 @@
 class BotPortalController < ApplicationController
+  #This line bypasses CSRF token authenticity checks for the bot_filed_scrum
+  skip_before_filter :verify_authenticity_token, :only => [:bot_filed_scrum]
+
   def bot_checkpoint
     #Get the time
     today = Time.now
@@ -30,5 +33,42 @@ class BotPortalController < ApplicationController
       @laggards[laggard.to_s] = [irc_nick, tz]
     end
     @response = JSON.generate(@laggards)
+  end
+
+  def bot_filed_scrum
+    #The params variable below are the values that comes in from the route.
+    #Strong Parameters are used in the bot_params.permit method, new in Rails 4.
+    #This whitelists the acceptable parameters to be passed to the model.
+
+    bot_params = params
+
+    #The DailyScrum model needs a sprint_id to commit; therefore
+    #get the sprint_id.
+    #Did the user supply a sprint number? Otherwise use the current one.
+    if bot_params.key? "sprint_id"
+      bot_params["sprint_id"] = Sprint.find_by(sprint_number: params["sprint_number"]).id
+    else
+      bot_params["sprint_id"] = Sprint.last.id
+    end
+
+    #Remove the sprint_number param as it's no longer necessary; the DailyScrum
+    #model doesn't have a sprint_number field, only sprint_id, which we generate
+    #above.
+    bot_params = bot_params.except("sprint_number")
+
+    #TODO: similarly for date - pick today if not specified
+    #TODO: error checking if not kerberos IRC name; like blah_afk
+    #TODO: verify date is a valid date.
+    @query_result = DailyScrum.create(bot_params.permit(:scrum_date, :sprint_id, :scrum_yesterday, :scrum_today, :scrum_blockers, :scrum_user))
+
+    if not @query_result.errors.full_messages.empty?
+      respond_to do |format|
+        format.json { render :json => JSON.generate(@query_result.errors.full_messages) }
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => { :success => 1 } }
+      end
+    end
   end
 end
