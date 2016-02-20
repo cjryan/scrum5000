@@ -42,23 +42,29 @@ class BotPortalController < ApplicationController
 
     bot_params = params
 
+    #Catch any errors to report to the bot
+    @errors = []
+
     #The DailyScrum model needs a sprint_id to commit; therefore
     #get the sprint_id.
     #Did the user supply a sprint number? Otherwise use the current one.
-    if bot_params.key? "sprint_id"
-      bot_params["sprint_id"] = Sprint.find_by(sprint_number: params["sprint_number"]).id
+    if bot_params.key? "sprint_number"
+      begin
+        bot_params["sprint_id"] = Sprint.find_by(sprint_number: params["sprint_number"]).id
+      rescue
+        @errors << "Unable to find sprint."
+      end
     else
       bot_params["sprint_id"] = Sprint.last.id
     end
 
     #Similarly for user; get the id.
     if bot_params.key? "scrum_user"
-      bot_params["scrum_user"] = User.find_by(user_irc_nick: params["scrum_user"]).id
-    #else
-    #  TODO: error checking if not kerberos IRC name; like blah_afk
-    #  implement fuzzy matching for id; perhaps:
-    #  https://github.com/seamusabshere/fuzzy_match ?
-    #  also, if fuzzy match is found, maybe pass back to user to allow match
+      begin
+        bot_params["scrum_user"] = User.find_by(user_irc_nick: params["scrum_user"]).id
+      rescue
+        @errors << "Unable to find user."
+      end
     end
 
     #Get today's date in the user's TZ- pick today if not specified
@@ -80,8 +86,11 @@ class BotPortalController < ApplicationController
 
     #Send a response back to the bot, either the errors or a success message
     if not @query_result.errors.full_messages.empty?
+      @query_result.errors.full_messages.each do |err|
+        @errors << err
+      end
       respond_to do |format|
-        format.json { render :json => JSON.generate(@query_result.errors.full_messages) }
+        format.json { render :json => JSON.generate(@errors) }
       end
     else
       respond_to do |format|
