@@ -41,3 +41,6 @@ config/secrets.yml
 
 #Ignore vim swp files:
 *.swp
+
+#Ignore byebug histories
+.byebug_history
