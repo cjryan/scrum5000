@@ -90,11 +90,11 @@ class BotPortalController < ApplicationController
         @errors << err
       end
       respond_to do |format|
-        format.json { render :json => JSON.generate(@errors) }
+        format.json { render :text => @errors }
       end
     else
       respond_to do |format|
-        format.json { render :json => { :success => 1 } }
+        format.json { render :text => "Scrum successfully saved." }
       end
     end
   end
