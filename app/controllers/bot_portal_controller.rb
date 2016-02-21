@@ -78,10 +78,14 @@ class BotPortalController < ApplicationController
     #TODO: verify date is a valid date, see:
     #https://github.com/adzap/validates_timeliness
     if not bot_params.key? "scrum_date"
-      tz = User.find_by(:id=>bot_params["scrum_user"]).user_tz
-      user_zone = ActiveSupport::TimeZone[tz]
-      user_zone_time = user_zone.at(Time.now).strftime("%Y-%m-%d")
-      bot_params["scrum_date"] = user_zone_time
+      begin
+        tz = User.find_by(:id=>bot_params["scrum_user"]).user_tz
+        user_zone = ActiveSupport::TimeZone[tz]
+        user_zone_time = user_zone.at(Time.now).strftime("%Y-%m-%d")
+        bot_params["scrum_date"] = user_zone_time
+      rescue
+        @errors << "Unable to locate user timezone."
+      end
     end
 
     #Remove the sprint_number param as it's no longer necessary; the DailyScrum
