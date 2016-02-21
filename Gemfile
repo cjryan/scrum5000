@@ -60,6 +60,9 @@ gem 'yaml_db'
 
 gem 'json', '~>1.8.1'
 
+#Use Fuzzy Matching for channel user identification.
+gem 'fuzzy_match'
+
 # Use debugger
 group :development, :test do
   gem 'pry'

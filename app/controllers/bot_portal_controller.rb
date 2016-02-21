@@ -60,8 +60,15 @@ class BotPortalController < ApplicationController
 
     #Similarly for user; get the id.
     if bot_params.key? "scrum_user"
+      #Use fuzzy matching to check for a similar nick,
+      #in case the user changed their nick to _afk, _mtg, etc.
+      user_query_result = User.select("user_irc_nick").where("is_active"=>"t")
+      user_list = []
+      user_query_result.each{|u| user_list << u.user_irc_nick}
+      fuzz = FuzzyMatch.new(user_list)
+      fuzz_find = fuzz.find(bot_params["scrum_user"])
       begin
-        bot_params["scrum_user"] = User.find_by(user_irc_nick: params["scrum_user"]).id
+        bot_params["scrum_user"] = User.find_by(user_irc_nick: fuzz_find).id
       rescue
         @errors << "Unable to find user."
       end
