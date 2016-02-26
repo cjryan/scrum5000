@@ -11,6 +11,7 @@ class YamlDbBackupController < ApplicationController
     warden.custom_failure! if performed?
   end
 
+  #Display the yaml file to the user, after auth
   def render_yaml
     send_file(
       "#{ENV['OPENSHIFT_DATA_DIR']}/dumps/data.yml",
@@ -19,6 +20,7 @@ class YamlDbBackupController < ApplicationController
     )
   end
 
+  #List all of the current backups
   def list_backups
   end
 end
