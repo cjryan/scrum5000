@@ -1,5 +1,5 @@
-== README
 The Scrum 5000 application is here for your scrum pleasure!
+===========================================================
 
 Use Scrum 5000 to set a sprint, and keep track of daily activites, by user.
 
