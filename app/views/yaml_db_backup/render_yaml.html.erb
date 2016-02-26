@@ -1,2 +1,9 @@
-<h1>YamlDbBackup#render_yaml</h1>
-<p>Find me in app/views/yaml_db_backup/render_yaml.html.erb</p>
+<h1>Backups</h1>
+<% if user_signed_in? %>
+  <%# backups = Dir.glob("#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*") %>
+  <%# link_to('here', "#{ENV['OPENSHIFT_DATA_DIR']}/dumps/data.yaml") %>
+<% else %>
+    <div id="error_explanation">
+      <h3>Please sign in.</h3>
+    </div><!-- end error_explanation -->
+<% end %>
