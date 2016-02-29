@@ -4,7 +4,7 @@ The Scrum 5000 application is here for your scrum pleasure!
 Use Scrum 5000 to set a sprint, and keep track of daily activites, by user.
 
 #Initial setup
-rhc create-app cron ruby-2.0 -a scrumapp
+rhc create-app cron ruby-2.0 -a scrumapp --from-code https://github.com/cjryan/scrum5000
 
 #Configuration
 Please see the config/database.yml file for database and application variables that need to be set prior to running the application. On linux, this can be acheived by running
