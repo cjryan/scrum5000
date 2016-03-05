@@ -14,6 +14,7 @@ class YamlDbBackupController < ApplicationController
   #Display the yaml file to the user, after auth
   def render_yaml
     #latest_backup = list_backups.last
+    #add gzip support to shrink for transport and storage
     send_file(
       "#{ENV['OPENSHIFT_DATA_DIR']}/dumps/data.yml",
       filename: "test.yml",
@@ -23,8 +24,8 @@ class YamlDbBackupController < ApplicationController
 
   #List all of the current backups
   def list_backups
-    #Dir.glob('#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*')
+    Dir.glob('#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*')
     #return array of files
-    #filenames.sort_by {|filename| File.mtime(filename) }
+    filenames.sort_by {|filename| File.mtime(filename) }
   end
 end
