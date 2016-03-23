@@ -15,9 +15,12 @@ class YamlDbBackupController < ApplicationController
   def render_yaml
     #latest_backup = list_backups.last
     #add gzip support to shrink for transport and storage
+    #The dbdump_yaml folder below is created by the daily cron job
+    #found in .openshift/cron/daily/dbdump. If not using openshift,
+    #please change the below line  in lieu of 'OPENSHIFT_DATA_DIR/dbdump_yaml'
     send_file(
-      "#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/dump-2016-03-23_160212.tar.bz2",
-      filename: "test.yml",
+      "#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/dump-2016-03-23_160115.tar.bz2",
+      filename: "dump.tar.bz2",
       type: "application/x-bzip2"
     )
   end
