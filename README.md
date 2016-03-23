@@ -49,6 +49,18 @@ If running a standalone rails instance,
 ```
 rake db:data:load
 ```
+If on OpenShift, to offload this manual task to cron, simply follow:
+
+To schedule your scripts to run on a periodic basis, add the scripts to
+your application's .openshift/cron/{minutely,hourly,daily,weekly,monthly}/
+directories (and commit and redeploy your application).
+
+Example: A script .openshift/cron/hourly/crony added to your application
+         will be executed once every hour.
+         Similarly, a script .openshift/cron/weekly/chronograph added
+         to your application will be executed once every week.
+
+
 #Basic Usage
 Once the application is configured properly, you can visit the site's URL and log in for the first time. The application uses the Devise gem for authentication. Click "Sign Up" on the homepage to create an account.
 
