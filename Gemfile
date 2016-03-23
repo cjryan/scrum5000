@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#Specify Rack 1.5.2 for OpenShift ror40
+gem 'rack', '1.5.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

@@ -16,16 +16,16 @@ class YamlDbBackupController < ApplicationController
     #latest_backup = list_backups.last
     #add gzip support to shrink for transport and storage
     send_file(
-      "#{ENV['OPENSHIFT_DATA_DIR']}/dumps/data.yml",
+      "#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/dump-2016-03-23_160212.tar.bz2",
       filename: "test.yml",
-      type: "text/plain"
+      type: "application/x-bzip2"
     )
   end
 
   #List all of the current backups
   def list_backups
-    Dir.glob('#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*')
+    #Dir.glob('#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*')
     #return array of files
-    filenames.sort_by {|filename| File.mtime(filename) }
+    #filenames.sort_by {|filename| File.mtime(filename) }
   end
 end
