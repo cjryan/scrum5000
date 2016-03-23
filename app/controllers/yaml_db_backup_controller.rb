@@ -13,11 +13,10 @@ class YamlDbBackupController < ApplicationController
 
   #Display the yaml file to the user, after auth
   def render_yaml
-    latest_backup = Dir['*'].sort_by{ |f| File.mtime(f) }.last
-    #add gzip support to shrink for transport and storage
     #The dbdump_yaml folder below is created by the daily cron job
     #found in .openshift/cron/daily/dbdump. If not using openshift,
     #please change the below line  in lieu of 'OPENSHIFT_DATA_DIR/dbdump_yaml'
+    latest_backup = Dir["#{ENV['OPENSHIFT_DATA_DIR/dbdump_yaml']}"].sort_by{ |f| File.mtime(f) }.last
     send_file(
       "#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/#{latest_backup}",
       filename: "dump.tar.bz2",
