@@ -16,7 +16,9 @@ class YamlDbBackupController < ApplicationController
     #The dbdump_yaml folder below is created by the daily cron job
     #found in .openshift/cron/daily/dbdump. If not using openshift,
     #please change the below line  in lieu of 'OPENSHIFT_DATA_DIR/dbdump_yaml'
-    latest_backup = Dir["#{ENV['OPENSHIFT_DATA_DIR/dbdump_yaml']}"].sort_by{ |f| File.mtime(f) }.last
+    latest_backup = Dir["#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml"].sort_by{ |f| File.mtime(f) }.last
+    require 'pry-byebug'
+    binding.pry
     send_file(
       "#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/#{latest_backup}",
       filename: "dump.tar.bz2",
