@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Create a folder to store the database dumps, if it doesn't exist
+mkdir -p $OPENSHIFT_DATA_DIR/dbdump_yaml
+
+#Perform the dump, and compress it for later storage, move it to $DATA_DIR
+#and remove it from the app repo
+cd $OPENSHIFT_REPO_DIR && scl enable ror40 "bundle exec rake db:data:dump"
+cd $OPENSHIFT_REPO_DIR/db && tar -cvjf dump.tar.bz2 data.yml
+mv $OPENSHIFT_REPO_DIR/db/dump.tar.bz2 $OPENSHIFT_DATA_DIR/dbdump_yaml/dump-$(date +%Y-%m-%d_%H%M%S).tar.bz2
+cd $OPENSHIFT_REPO_DIR/db && rm data.yml
