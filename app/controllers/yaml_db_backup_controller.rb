@@ -26,8 +26,6 @@ class YamlDbBackupController < ApplicationController
 
   #List all of the current backups
   def list_backups
-    #Dir.glob('#{ENV['OPENSHIFT_DATA_DIR']}/dumps/**/*')
-    #return array of files
-    #filenames.sort_by {|filename| File.mtime(filename) }
+    @list_backups = Dir["#{ENV['OPENSHIFT_DATA_DIR']}/dbdump_yaml/*"].sort_by{ |f| File.mtime(f) }
   end
 end
