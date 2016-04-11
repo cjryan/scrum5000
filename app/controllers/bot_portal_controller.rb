@@ -93,6 +93,12 @@ class BotPortalController < ApplicationController
     #above.
     bot_params = bot_params.except("sprint_number")
 
+    #Check for empty blockers, which are allowed, but need to be converted
+    #to "" to avoid parsing errors in the markdown helper
+    if not bot_params.key? "scrum_blockers"
+      bot_params["scrum_blockers"] = ""
+    end
+
     @query_result = DailyScrum.create(bot_params.permit(:scrum_date, :sprint_id, :scrum_yesterday, :scrum_today, :scrum_blockers, :scrum_user))
 
     #Send a response back to the bot, either the errors or a success message
