@@ -66,6 +66,8 @@ Once the application is configured properly, you can visit the site's URL and lo
 
 Once an account is setup, you will want to start creating "sprints", as they are what the daily scrum is grouped by. This can be done using the "Sprint" button in the main menu.
 
+Daily scrums can be viewed by user, or by sprint using the navigational menu at the top of most pages.
+
 #Bot integration
 This application provides integration with an IRC bot, which will allow a user to receive timely and persistent reminders to complete their scrum. It will also allow the user to file a scrum directly from the IRC channel they are in. For more information, see [cucubot](https://github.com/cjryan/cucubot)
 
