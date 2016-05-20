@@ -1,5 +1,5 @@
-The Scrum 5000 application is here for your scrum pleasure!
-===========================================================
+Scrum 5000 - a way to track your team's scrum activity
+======================================================
 
 Use Scrum 5000 to set a sprint, and keep track of daily activites, by user.
 
